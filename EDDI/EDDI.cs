@@ -215,7 +215,7 @@ namespace Eddi
                 }
                 else
                 {
-                    // If InvokeUpdatePlugin failed then it will have have left an error message, but this once we ignore it
+                    // If InvokeUpdatePlugin failed then it will have have left an error message, but this once we ignore it.
                     Logging.Info("EDDI access to the companion app is disabled");
                 }
 
