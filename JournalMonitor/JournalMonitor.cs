@@ -319,11 +319,11 @@ namespace EddiJournalMonitor
                             break;
                         case "Promotion":
                             {
-										   
+                                object val;
                                 if (data.ContainsKey("Combat"))
                                 {
-                                    int RankRating = getInt(data, "Combat");
-                                    CombatRating rating = CombatRating.FromRank(RankRating);
+                                    data.TryGetValue("Combat", out val);
+                                    CombatRating rating = CombatRating.FromRank(Convert.ToInt32(val));
                                     events.Add(new CombatPromotionEvent(timestamp, rating) { raw = line });
                                     handled = true;
                                 }
@@ -336,8 +336,8 @@ namespace EddiJournalMonitor
                                 }
                                 else if (data.ContainsKey("Explore"))
                                 {
-                                    int RankRating = getInt(data, "Explore");
-                                    ExplorationRating rating = ExplorationRating.FromRank(RankRating);
+                                    data.TryGetValue("Explore", out val);
+                                    ExplorationRating rating = ExplorationRating.FromRank(Convert.ToInt32(val));
                                     events.Add(new ExplorationPromotionEvent(timestamp, rating) { raw = line });
                                     handled = true;
                                 }
@@ -351,8 +351,8 @@ namespace EddiJournalMonitor
                                 }
                                 else if (data.ContainsKey("Empire"))
                                 {
-                                    int RankRating = getInt(data, "Empire");
-                                    EmpireRating rating = EmpireRating.FromRank(RankRating);
+                                    data.TryGetValue("Empire", out val);
+                                    EmpireRating rating = EmpireRating.FromRank(Convert.ToInt32(val));
                                     events.Add(new EmpirePromotionEvent(timestamp, rating) { raw = line });
                                     handled = true;
                                 }
